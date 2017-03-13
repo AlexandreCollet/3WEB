@@ -10,3 +10,5 @@
 [ARIA states and properties](https://www.w3.org/TR/wai-aria/states_and_properties)
 
 [Microdata schemas](http://schema.org)
+
+[Microdata Rich snippets](https://search.google.com/structured-data/testing-tool)
