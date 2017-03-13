@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1"/>
+	    <link rel="stylesheet" href="css/bootstrap.css" media="all">
+		<title>3WEB - Sequence 1 - HTML new APIs - Geolocation</title>
+
+		<style>
+			#results{margin-top: 25px;}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="container">
+
+			<h1>Sequence 1 - HTML new APIs - Geolocation</h1>
+
+			<!-- ~~~~~ -->
+			<!-- RULES -->
+			<!-- ~~~~~ -->
+
+			<h2>Rules</h2>
+
+			<ul>
+				<li>Create a new page with a simple button </li>
+				<li>When the user clicks on the button, you have to display his address </li>
+				<li>
+					To convert coordinates to address, you can use the Google Maps Geocoder API
+				 	<a href="https://developers.google.com/maps/documentation/javascript/geocoding">https://developers.google.com/maps/documentation/javascript/geocoding</a>
+				 </li>
+				 <li>http://maps.googleapis.com/maps/api/geocode/json?latlng=MALATITUDE,MALONGITUDE&sensor=true</li>
+			</ul>
+
+			<!-- ~~~~~~~~~~ -->
+			<!-- CORRECTION -->
+			<!-- ~~~~~~~~~~ -->
+
+			<h2>Correction</h2>
+
+			<a id="btnGeolocation" href="#" class="btn btn-info btn-lg btn-block">Where are you ?</a>
+
+			<div id="results"></div>
+
+		</div>
+
+		<!-- ~~~~~~~~~~ -->
+		<!-- JAVASCRIPT -->
+		<!-- ~~~~~~~~~~ -->
+
+		<!-- bootstrap -->
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+
+		<!-- Correction -->
+		<script>
+			var button = document.getElementById('btnGeolocation');
+
+			button.onclick = function(){
+				if(!navigator.geolocation){
+					createAlert('danger', 'Geolocation is not supported by this browser.');
+					return false;
+				}
+
+				navigator.geolocation.getCurrentPosition(function(position){
+					console.log(position);
+
+					var lat = position.coords.latitude;
+					var lng = position.coords.longitude;
+
+					var request = new XMLHttpRequest();
+
+					request.open('GET', 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&sensor=true');
+					request.setRequestHeader('Accept', 'application/json');
+
+					request.addEventListener('readystatechange', function(){
+						if (request.readyState != 4 || request.status != 200) return;
+
+				    	var response = JSON.parse(request.responseText);
+				    	console.log(response);
+				    	if(response.status != "OK") return;
+
+				    	createAlert('success', response.results[0].formatted_address);
+					});
+
+					request.send(null);
+				});
+
+				return false;
+			}
+
+			function createAlert(type,message){
+				var alertsContainer = document.getElementById('results');
+
+				alertsContainer.innerHTML += '<div class="alert alert-dismissable alert-' + type + '">' +
+													'<button type="button" class="close" data-dismiss="alert">×</button>' +
+													message +
+											'</div>';
+			}
+
+		</script>
+
+	</body>
+
+</html>

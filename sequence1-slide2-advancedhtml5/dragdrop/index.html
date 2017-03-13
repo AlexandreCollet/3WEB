@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1"/>
+	    <link rel="stylesheet" href="css/bootstrap.css" media="all">
+		<title>3WEB</title>
+		<style>
+			img{
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+			}
+
+			#banana-dropzone,#strawberry-dropzone,#peach-dropzone{
+				display: inline-block;
+				vertical-align: top;
+				width: 200px;
+				height: 200px;
+			}
+
+			#banana-dropzone{ background-color: yellow; }
+			#strawberry-dropzone{ background-color: red; }
+			#peach-dropzone{ background-color: orange; }
+		</style>
+	</head>
+
+	<body>
+
+		<div class="container">
+
+			<h1>Drag And Drop</h1>
+
+			<img draggable id="banana-1" src="img/banana.png" alt="">
+			<img draggable id="peach-1" src="img/peach.png" alt="">
+			<img draggable id="strawberry-1" src="img/strawberry.png" alt="">
+			<img draggable id="peach-2" src="img/peach.png" alt="">
+			<img draggable id="strawberry-2" src="img/strawberry.png" alt="">
+			<img draggable id="banana-2" src="img/banana.png" alt="">
+			<img draggable id="strawberry-3" src="img/strawberry.png" alt="">
+			<img draggable id="banana-3" src="img/banana.png" alt="">
+
+			<div id="dropzones">
+				<div id="banana-dropzone"></div>
+				<div id="strawberry-dropzone"></div>
+				<div id="peach-dropzone"></div>
+			</div>
+
+
+		</div>
+
+		<!-- ~~~~~~~~~~ -->
+		<!-- JAVASCRIPT -->
+		<!-- ~~~~~~~~~~ -->
+
+		<!-- bootstrap -->
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+
+		<!-- Drag and Drop -->
+		<script>
+
+			var fruits = document.querySelectorAll('img[draggable]');
+
+			for(var i=0,l=fruits.length;i<l;i++){
+				fruits[i].addEventListener('dragstart', function(event){
+					event.dataTransfer.setData('text/plain',this.id);
+				});
+			}
+
+			var bananaDropzone = document.getElementById('banana-dropzone');
+			var strawberryDropzone = document.getElementById('strawberry-dropzone');
+			var peachDropzone = document.getElementById('peach-dropzone');
+
+			bananaDropzone.addEventListener('dragover', function(e){e.preventDefault()});
+			strawberryDropzone.addEventListener('dragover', function(e){e.preventDefault()});
+			peachDropzone.addEventListener('dragover', function(e){e.preventDefault()});
+
+			bananaDropzone.addEventListener('drop', function(){
+				var id = event.dataTransfer.getData('text/plain');
+				moveFruit('banana',id,this);
+			});
+
+			strawberryDropzone.addEventListener('drop', function(){
+				var id = event.dataTransfer.getData('text/plain');
+				moveFruit('strawberry',id,this);
+			});
+
+			peachDropzone.addEventListener('drop', function(){
+				var id = event.dataTransfer.getData('text/plain');
+				moveFruit('peach',id,this);
+			});
+
+			function moveFruit(type, fruitId, dropzone){
+				var regexp = new RegExp('^' + type);
+				if(!regexp.test(fruitId)) return;
+
+				var fruit = document.getElementById(fruitId);
+				dropzone.appendChild(fruit);
+			}
+
+
+		</script>
+
+	</body>
+
+</html>

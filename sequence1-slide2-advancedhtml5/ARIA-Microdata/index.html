@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1"/>
+        <link rel="stylesheet" href="css/bootstrap.css" media="all">
+        <title>Sequence 1 - ARIA & Microdata - Exercise</title>
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <h1>Sequence 1 - ARIA & Microdata - Exercise</h1>
+
+            <!-- ~~~~~ -->
+            <!-- RULES -->
+            <!-- ~~~~~ -->
+
+            <h2>Rules</h2>
+
+            <ul>
+                <li>Let’s design a simple widget: an HTML5 event manager!</li>
+                <li>
+                    Create a form asking some information
+                    <ul>
+                        <li>Event : Name, start date, end date</li>
+                        <li>Location : City, postal code, box number and street</li>
+                    </ul>
+                </li>
+                <li>Use HTML5 new input types & validation attributes</li>
+                <li>
+                    Display data inside an HTML dialog on submit
+                    <ul>
+                        <li>Be creative for the design!</li>
+                        <li>Use microdata to each property</li>
+                        <li>Use ARIA role and label on dialog box</li>
+                    </ul>
+                </li>
+                <li>Validate your HTML code with W3C validator and Rich Snippet Testing Tool</li>
+            </ul>
+
+            <!-- ~~~~~~~~~~ -->
+            <!-- CORRECTION -->
+            <!-- ~~~~~~~~~~ -->
+
+            <h2>Correction</h2>
+
+            <h3>Create an event</h3>
+            <form action="#" method="POST" id="eventForm">
+
+                <div class="form-group">
+                    <label class="control-label" for="EventName">Event Name</label>
+                    <input class="form-control" id="EventName" type="text" name="event-name" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="EventStart">Event Start Date</label>
+                    <input class="form-control" id="EventStart" type="date" name="event-start" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="EventStop">Event End Date</label>
+                    <input class="form-control" id="EventStop" type="date" name="event-stop" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="EventLocationCity">City</label>
+                    <input class="form-control" id="EventLocationCity" type="text" name="event-location-city" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="EventLocationPostalCode">Postal Code</label>
+                    <input class="form-control" id="EventLocationPostalCode" type="number" name="event-location-postalcode" min="1000" max="98890" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="EventLocationBoxNumber">Box Number</label>
+                    <input class="form-control" id="EventLocationBoxNumber" type="number" name="event-location-boxnumber" min="0">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="EventLocationStreet">Street</label>
+                    <input class="form-control" id="EventLocationStreet" type="text" name="event-location-street" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Create event</button>
+
+            </form>
+
+            <div class="modal" id="displayEventModal" role="dialog" aria-labelledby="modalEventName" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" itemscope itemtype="http://schema.org/Event" aria-live="polite" aria-relevant="text" aria-atomic="true">
+                        <div class="modal-header">
+                            <h4 itemprop="name" class="modal-title" id="modalEventName"></h4>
+                        </div>
+                        <div class="modal-body">
+
+                            <p>Start date : <span id="modalStartDate" itemprop="startDate"></span></p>
+                            <p>End date : <span id="modalEndDate" itemprop="endDate"></span></p>
+
+                            <div itemprop="location" itemscope itemtype="http://schema.org/PostalAddress">
+                                <span itemprop="postOfficeBoxNumber" id="modalBoxNumber"></span>
+                                <span itemprop="streetAddress" id="modalStreet"></span>
+                                <span itemprop="postalCode" id="modalPostalCode"></span>
+                                <span itemprop="addressLocality" id="modalCity"></span>
+                           </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" id="closeButton">Close</button>
+                            <button type="button" class="btn btn-primary" id="saveButton">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ~~~~~~~~~~ -->
+        <!-- JAVASCRIPT -->
+        <!-- ~~~~~~~~~~ -->
+
+        <!-- bootstrap -->
+        <script src="js/jquery-1.11.2.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+
+        <!-- Correction -->
+
+        <script>
+
+            var eventForm = document.getElementById('eventForm');
+
+            var inputs = {
+
+                name  : document.getElementById('EventName'),
+                start : document.getElementById('EventStart'),
+                stop  : document.getElementById('EventStop'),
+
+                city       : document.getElementById('EventLocationCity'),
+                postalCode : document.getElementById('EventLocationPostalCode'),
+                boxNumber  : document.getElementById('EventLocationBoxNumber'),
+                street     : document.getElementById('EventLocationStreet'),
+
+            }
+
+            eventForm.onsubmit = function(){
+
+                document.getElementById('modalEventName').innerHTML  = inputs.name.value;
+                document.getElementById('modalStartDate').innerHTML  = inputs.start.value;
+                document.getElementById('modalEndDate').innerHTML    = inputs.stop.value;
+                document.getElementById('modalCity').innerHTML       = inputs.city.value;
+                document.getElementById('modalPostalCode').innerHTML = inputs.postalCode.value;
+                document.getElementById('modalStreet').innerHTML     = inputs.street.value;
+                document.getElementById('modalBoxNumber').innerHTML  = inputs.boxNumber.value;
+
+                showModal();
+
+                return false;
+
+            }
+
+
+            /**
+             * Gestion des min et max dates
+             */
+
+            var today = new Date();
+
+            inputs.start.min = today.getFullYear() + "-" + (today.getMonth()+1 <10 ? "0" : "" ) + (today.getMonth() + 1) + "-" + today.getDate();
+            inputs.stop.min  = today.getFullYear() + "-" + (today.getMonth()+1 <10 ? "0" : "" ) + (today.getMonth() + 1) + "-" + today.getDate();
+
+            inputs.stop.onchange = function(){
+                inputs.start.max = this.value;
+            }
+
+            inputs.start.onchange = function(){
+                inputs.stop.min = this.value;
+            }
+
+            /**
+             * Gestion de la modal
+             */
+
+            var modal       = document.getElementById('displayEventModal');
+            var saveButton  = document.getElementById("saveButton");
+            var closeButton = document.getElementById("closeButton");
+
+            closeButton.onclick = function(){ hideModal(); }
+
+            var modalOpen = false;
+            var lastFocus = null;
+
+            function showModal(el) {
+
+                lastFocus = el || document.activeElement;
+
+                $(modal).modal('show');
+                modalOpen = true;
+                modal.setAttribute('aria-hidden',false);
+
+                saveButton.focus();
+
+            }
+
+            function hideModal() {
+
+                $(modal).modal('hide');
+                modalOpen = false;
+                modal.setAttribute('aria-hidden',true);
+
+                lastFocus.focus();
+            }
+
+            document.addEventListener("keydown", function(event) {
+
+                if (modalOpen && event.keyCode == 27) { // 27 = escape
+                    hideModal();
+                }
+
+            });
+
+        </script>
+
+    </body>
+
+</html>
