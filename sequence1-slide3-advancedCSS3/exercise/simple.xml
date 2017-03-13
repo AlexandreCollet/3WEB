@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<?xml-stylesheet type="text/css" href="style.css" ?>
+
+<breakfast_menu xmlns="http://www.ns.com/ns/Menu" xmlns:food="http://www.ns.com/ns/Food">
+	<food:food>
+		<food:name>Belgian Waffles</food:name>
+		<food:price>$5.95</food:price>
+		<food:description>Two of our famous Belgian Waffles with plenty of real maple syrup</food:description>
+		<food:calories>650</food:calories>
+	</food:food>
+	<food:food>
+		<food:name>Strawberry Belgian Waffles</food:name>
+		<food:price>$7.95</food:price>
+		<food:description>Light Belgian waffles covered with strawberries and whipped cream</food:description>
+		<food:calories>900</food:calories>
+	</food:food>
+	<food:food>
+		<food:name>Berry-Berry Belgian Waffles</food:name>
+		<food:price>$8.95</food:price>
+		<food:description>Light Belgian waffles covered with an assortment of fresh berries and whipped cream</food:description>
+		<food:calories>900</food:calories>
+	</food:food>
+	<food:food>
+		<food:name>French Toast</food:name>
+		<food:price>$4.50</food:price>
+		<food:description>Thick slices made from our homemade sourdough bread</food:description>
+		<food:calories>600</food:calories>
+	</food:food>
+	<food:food>
+		<food:name>Homestyle Breakfast</food:name>
+		<food:price>$6.95</food:price>
+		<food:description>Two eggs, bacon or sausage, toast, and our ever-popular hash browns</food:description>
+		<food:calories>950</food:calories>
+	</food:food>
+</breakfast_menu>

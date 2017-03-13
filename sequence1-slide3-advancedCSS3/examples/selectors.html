@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1"/>
+	    <link rel="stylesheet" href="css/bootstrap.css" media="all">
+	    <link rel="stylesheet" href="css/prism.css" media="all">
+	    <link rel="stylesheet" href="css/style.css" media="all">
+		<title>3WEB - Sequence 1 - Advanced CSS3 - Selectors</title>
+		<style>
+
+			#regex1 a { color : green; }
+			#regex1 a[href^="http"] { color : red; }
+
+			#regex2 a { color : green; }
+			#regex2 a[href$=".jpg"] { color : red; }
+
+			#regex3 a { color : green; }
+			#regex3 a[href*="google"] { color : red; }
+
+			:root { font-family : "Comic Sans MS"; }
+
+			#brothers1 ul ~ p { color : red; }
+			#brothers2 ul + p { color : red; }
+
+			#childs1 ul:nth-child(2) { color : red; }
+			#childs1 ul:nth-last-child(3) { color : green; }
+
+			#childs2 ul:first-child { color : red; }
+			#childs2 ul:last-child { color : green; }
+
+			#type1 ul:nth-of-type(2){ color : red; }
+			#type1 ul:nth-last-of-type(3) { color : green; }
+
+			#empty1 div:empty{ background-color : red; }
+
+			#oddeven1 td{width:100px;}
+			#oddeven1 tr:nth-child(odd){color: red;}
+			#oddeven1 tr:nth-child(even){color: green;}
+
+			:target{
+				border : 2px solid green;
+			}
+			#others2 input:enabled { background-color : green }
+			#others2 input:disabled { background-color : red }
+			#others3 input[type=radio]:checked + label{ color : green }
+			#others4 li:not(:first-child){ color : green }
+		</style>
+	</head>
+
+	<body>
+
+		<div class="container">
+
+			<h1>Sequence 1 - Advanced CSS3 - Selectors</h1>
+
+			<ul class="pager">
+			  	<li><a href="index.html">Home</a></li>
+			</ul>
+
+			<ul class="nav nav-tabs">
+			  	<li class="active">
+			  		<a href="#regex" data-toggle="tab">Regex</a>
+			  	</li>
+			  	<li>
+			  		<a href="#root" data-toggle="tab">Root</a>
+			  	</li>
+			  	<li>
+			  		<a href="#brothers" data-toggle="tab">~ & +</a>
+			  	</li>
+			  	<li>
+			  		<a href="#childs" data-toggle="tab">Childs</a>
+			  	</li>
+			  	<li>
+			  		<a href="#type" data-toggle="tab">Type</a>
+			  	</li>
+			  	<li>
+			  		<a href="#empty" data-toggle="tab">Empty</a>
+			  	</li>
+			  	<li>
+			  		<a href="#oddeven" data-toggle="tab">Odd & Even</a>
+			  	</li>
+			  	<li>
+			  		<a href="#others" data-toggle="tab">Others</a>
+			  	</li>
+			</ul>
+
+			<div id="myTabContent" class="tab-content">
+			  	<div class="tab-pane active" id="regex">
+
+			  		<h2>Regex</h2>
+
+					<h3>E[foo^="bar"]</h3>
+			  		<pre><code class="language-css">#regex1 a { color : green; }
+#regex1 a[href^="http"] { color : red; }</code></pre>
+			  		<div id="regex1">
+			  			<p>Lorem ipsum dolor sit amet, <a href="http://google/.fr">http://google/.fr</a> consectetur adipisicing elit. <a href="index.html">Home</a> Eveniet accusamus ipsa, delectus commodi vero a in veritatis unde tenetur corporis reiciendis eos dolorem illo vitae est excepturi omnis mollitia tempora.</p>
+			  		</div>
+
+					<h3>E[foo$="bar"]</h3>
+			  		<pre><code class="language-css">#regex2 a { color : green; }
+#regex2 a[href$=".jpg"] { color : red; }</code></pre>
+			  		<div id="regex2">
+			  			<p>Lorem ipsum dolor sit amet, <a href="img/css3.jpg">mon logo css3 en jpg</a> consectetur adipisicing elit. <a href="index.html">Home</a> Eveniet accusamus ipsa, delectus commodi vero a in veritatis unde tenetur corporis reiciendis eos dolorem illo vitae est excepturi omnis mollitia tempora.</p>
+			  		</div>
+
+			  		<h3>E[foo*="bar"]</h3>
+			  		<pre><code class="language-css">#regex3 a { color : green; }
+#regex3 a[href*="google"] { color : red; }</code></pre>
+			  		<div id="regex3">
+			  			<p>Lorem ipsum dolor sit amet, <a href="http://google/.fr">http://google/.fr</a> consectetur adipisicing elit. <a href="index.html">Home</a> Eveniet accusamus ipsa, delectus commodi vero a in veritatis unde tenetur corporis reiciendis eos dolorem illo vitae est excepturi omnis mollitia tempora.</p>
+			  		</div>
+			    </div>
+
+			    <div class="tab-pane" id="root">
+
+			    	<h2>Root</h2>
+
+					<h3>:root</h3>
+					<pre><code class="language-css">:root { font-family : "Comic Sans MS"; } </code></pre>
+			    </div>
+
+			    <div class="tab-pane" id="brothers">
+			    	<h2>~ & +</h2>
+
+			    	<h3>~</h3>
+			    	<pre><code class="language-css"> #brothers1 ul ~ p { color : red; } </code></pre>
+			    	<div id="brothers1">
+			    		<p>"Faut arrêter ces conneries de nord et de sud ! Une fois pour toutes, le nord, suivant comment on est tourné, ça change tout !" Perceval</p>
+			    		<p>"Si Joseph d'Arimatie a pas été trop con, vous pouvez être sûr que le Graal, c'est un bocal à anchois." Perceval</p>
+			    		<ul>
+			    			<li>Karadok</li>
+			    			<li>Perceval</li>
+			    			<li>Kadoc</li>
+			    		</ul>
+			    		<p>"13, 14, 15... enfin, tous les chiffres impairs jusqu'à 22." Perceval</p>
+			    		<p>"En plus je connais une technique pour tuer trois hommes en un coup rien qu’avec des feuilles mortes ! Alors là, vous êtes deux, vous avez bien de la chance." Perceval</p>
+			    	</div>
+
+			    	<h3>+</h3>
+			    	<pre><code class="language-css"> #brothers2 ul + p { color : red; } </code></pre>
+			    	<div id="brothers2">
+			    		<p>"C’est vrai ce qu’on dit, vous êtes le fils d’un démon et d’une pucelle ? Vous avez plus pris de la pucelle." Arthur</p>
+			    		<p>"Merlin, il sait déjà pas monter des blancs en neige, alors préparer une potion de polymorphie… Permettez-moi d'avoir des doutes." Arthur</p>
+			    		<ul>
+			    			<li>Karadok</li>
+			    			<li>Perceval</li>
+			    			<li>Kadoc</li>
+			    		</ul>
+			    		<p>"Au bout d'un moment, il est vraiment druide, c'mec-là, ou ça fait quinze ans qu'il me prend pour un con ?" Arthur</p>
+			    		<p>"Ça vous fait pas mal à la tête de glandouiller vingt-quatre heures sur vingt-quatre ?" Arthur</p>
+			    	</div>
+
+			    </div>
+
+			    <div class="tab-pane" id="childs">
+			    	<h2>Childs</h2>
+
+			    	<h3>E:nth-child(n) & E:nth-last-child(n)</h3>
+			    	<pre><code class="language-css">#childs1 ul:nth-child(2) { color : red; }
+#childs1 ul:nth-last-child(3) { color : green; }  </code></pre>
+			    	<div id="childs1">
+			    		<h4>title 1</h4>
+			    		<ul>
+			    			<li>Karadok</li>
+			    			<li>Perceval</li>
+			    			<li>Kadoc</li>
+			    		</ul>
+						<h4>title 2</h4>
+			    		<ul>
+			    			<li>Karadok</li>
+			    			<li>Perceval</li>
+			    			<li>Kadoc</li>
+			    		</ul>
+			    		<h4>title 3</h4>
+			    		<ul>
+			    			<li>Karadok</li>
+			    			<li>Perceval</li>
+			    			<li>Kadoc</li>
+			    		</ul>
+			    	</div>
+
+			    	<h3>E:first-child & E:last-child</h3>
+			    	<pre><code class="language-css">#childs2 ul:first-child { color : red; }
+#childs2 ul:last-child { color : green; }  </code></pre>
+			    	<div id="childs2">
+			    		<h4>title 1</h4>
+			    		<ul>
+			    			<li>Karadok</li>
+			    			<li>Perceval</li>
+			    			<li>Kadoc</li>
+			    		</ul>
+						<h4>title 2</h4>
+			    		<ul>
+			    			<li>Karadok</li>
+			    			<li>Perceval</li>
+			    			<li>Kadoc</li>
+			    		</ul>
+			    		<h4>title 3</h4>
+			    		<ul>
+			    			<li>Karadok</li>
+			    			<li>Perceval</li>
+			    			<li>Kadoc</li>
+			    		</ul>
+			    	</div>
+
+			    </div>
+
+			    <div class="tab-pane" id="type">
+			    	<h2>Type</h2>
+
+			    	<h3>E:nth-of-type(n) & E:nth-last-of-type(n)</h3>
+			    	<pre><code class="language-css">#type1 ul:nth-of-type(2){ color : red; }
+#type1 ul:nth-last-of-type(3) { color : green; }</code></pre>
+			    	<div id="type1">
+			    		<h4>title 1</h4>
+			    		<ul>
+			    			<li>Karadok</li>
+			    			<li>Perceval</li>
+			    			<li>Kadoc</li>
+			    		</ul>
+						<h4>title 2</h4>
+			    		<ul>
+			    			<li>Karadok</li>
+			    			<li>Perceval</li>
+			    			<li>Kadoc</li>
+			    		</ul>
+			    		<h4>title 3</h4>
+			    		<ul>
+			    			<li>Karadok</li>
+			    			<li>Perceval</li>
+			    			<li>Kadoc</li>
+			    		</ul>
+			    	</div>
+			    </div>
+
+			    <div class="tab-pane" id="empty">
+			    	<h2>Empty</h2>
+
+			    	<pre><code class="language-css">#empty1 div:empty{ background-color : red; }</code></pre>
+			    	<div id="empty1">
+			    		<div class="square"></div>
+			    		<div class="rectangle">
+			    			<ul>
+			    				<li>Perceval</li>
+			    				<li>Karadok</li>
+			    				<li>Kadoc</li>
+			    			</ul>
+			    		</div>
+			    		<div class="rectangle">Mécréantttt</div>
+			    	</div>
+
+			    </div>
+
+			    <div class="tab-pane" id="oddeven">
+			    	<h2>Odd & Even</h2>
+
+			    	<pre><code class="language-css">#oddeven1 tr:nth-child(odd){color: red;}
+#oddeven1 tr:nth-child(even){color: green;}</code></pre>
+					<table id="oddeven1">
+					   <tr>
+					       <th>Nom</th>
+					       <th>Âge</th>
+					       <th>Pays</th>
+					   </tr>
+					   <tr>
+					       <td>Carmen</td>
+					       <td>33 ans</td>
+					       <td>Espagne</td>
+					   </tr>
+					   <tr>
+					       <td>Michelle</td>
+					       <td>26 ans</td>
+					       <td>États-Unis</td>
+					   </tr>
+					   <tr>
+					       <td>Carmen</td>
+					       <td>33 ans</td>
+					       <td>Espagne</td>
+					   </tr>
+					   <tr>
+					       <td>Michelle</td>
+					       <td>26 ans</td>
+					       <td>États-Unis</td>
+					   </tr>
+					   <tr>
+					       <td>Carmen</td>
+					       <td>33 ans</td>
+					       <td>Espagne</td>
+					   </tr>
+					   <tr>
+					       <td>Michelle</td>
+					       <td>26 ans</td>
+					       <td>États-Unis</td>
+					   </tr>
+					</table>
+
+			    </div>
+
+			    <div class="tab-pane" id="others">
+			    	<h2>Others</h2>
+
+			    	<h3>:target</h3>
+
+			    	<pre><code class="language-css">:target{
+	border : 2px solid green;
+}</code></pre>
+					<div id="others1">
+						<a href="#others1">Go to example 1</a>
+						<a href="#others2">Go to example 2</a>
+						<a href="#others3">Go to example 3</a>
+						<a href="#others4">Go to example 4</a>
+					</div>
+
+
+
+			    	<h3>:enabled & :disabled</h3>
+
+			    	<pre><code class="language-css">#others2 input:enabled { background-color : green }
+#others2 input:disabled { background-color : red }</code></pre>
+					<div id="others2">
+						<input type="text" disabled placeholder="disabled input">
+						<input type="text" placeholder="enabled input">
+						<input type="text" placeholder="enabled input">
+					</div>
+
+
+
+			    	<h3>:checked</h3>
+
+			    	<pre><code class="language-css">#others3 input[type=radio]:checked + label{ color : green } </code></pre>
+					<div id="others3">
+						<input type="radio" name="rad">
+						<label for="rad">Radio 1</label>
+						<input type="radio" name="rad">
+						<label for="rad">Radio 2</label>
+					</div>
+
+			    	<h3>:not(selector)</h3>
+
+			    	<pre><code class="language-css">#others4 li:not(:first-child){ color : green } </code></pre>
+					<div id="others4">
+			    		<ul>
+			    			<li>Karadok</li>
+			    			<li>Perceval</li>
+			    			<li>Kadoc</li>
+			    		</ul>
+					</div>
+
+			    </div>
+
+			</div>
+
+		</div>
+
+		<!-- ~~~~~~~~~~ -->
+		<!-- JAVASCRIPT -->
+		<!-- ~~~~~~~~~~ -->
+
+		<!-- bootstrap -->
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+
+		<!-- prism -->
+		<script src="js/prism.js"></script>
+
+
+	</body>
+
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1"/>
+	    <link rel="stylesheet" href="css/bootstrap.css" media="all">
+	    <link rel="stylesheet" href="css/prism.css" media="all">
+	    <link rel="stylesheet" href="css/style.css" media="all">
+		<title>3WEB - Sequence 1 - Advanced CSS3 - Attributes - Containers</title>
+	</head>
+
+	<body>
+
+		<div class="container">
+
+			<h1>Sequence 1 - Advanced CSS3 - Attributes - Containers</h1>
+
+			<ul class="pager">
+			  	<li><a href="index.html">Home</a></li>
+			  	<li class="next"><a href="backgrounds.html">Backgrounds →</a></li>
+			</ul>
+
+			<ul class="nav nav-tabs">
+			  	<li class="active">
+			  		<a href="#boxshadow" data-toggle="tab">Box Shadow</a>
+			  	</li>
+			  	<li>
+			  		<a href="#boxsizing" data-toggle="tab">Box sizing</a>
+			  	</li>
+			  	<li>
+			  		<a href="#borderradius" data-toggle="tab">Border radius</a>
+			  	</li>
+			  	<li>
+			  		<a href="#borderimage" data-toggle="tab">Border Image</a>
+			  	</li>
+			</ul>
+
+			<div id="myTabContent" class="tab-content">
+			  	<div class="tab-pane active" id="boxshadow">
+
+			  		<h2>Box Shadow</h2>
+
+					<pre><code class="language-css">div { box-shadow: none | h-shadow v-shadow (blur) (spread) (color) (inset); }</code></pre>
+
+			  		<h3>Position (h-shadow & v-shadow)</h3>
+			  		<div class="col-xs-6">
+						<pre><code class="language-css">div { box-shadow: 5px 10px 0px 0px white; }</code></pre>
+						<div class="square" style="box-shadow: 5px 10px 0px 0px white;"></div>
+			  		</div>
+			  		<div class="col-xs-6">
+						<pre><code class="language-css">div { box-shadow: -10px -10px 0px 0px white; }</code></pre>
+						<div class="square" style="box-shadow: -10px -10px 0px 0px white;"></div>
+			  		</div>
+
+					<h3>Blur</h3>
+			  		<div class="col-xs-6">
+						<pre><code class="language-css">div { box-shadow: 10px 10px 5px 0px white; }</code></pre>
+						<div class="square" style="box-shadow: 10px 10px 5px 0px white;"></div>
+			  		</div>
+			  		<div class="col-xs-6">
+						<pre><code class="language-css">div { box-shadow: 0px 0px 25px 0px white; }</code></pre>
+						<div class="square" style="box-shadow: 0px 0px 25px 0px white;"></div>
+			  		</div>
+
+					<h3>Spread</h3>
+					<pre><code class="language-css">div { box-shadow: 0px 0px 5px 10px white; }</code></pre>
+					<div class="square" style="box-shadow: 0px 0px 5px 10px white;"></div>
+
+					<h3>Inset</h3>
+					<pre><code class="language-css">div { box-shadow: 0px 0px 25px 0px white inset; }</code></pre>
+					<div class="square" style="box-shadow: 0px 0px 25px 0px white inset;"></div>
+			    </div>
+			  	<div class="tab-pane" id="boxsizing">
+
+			  		<h2>Box Sizing</h2>
+
+			    	<pre><code class="language-css">div { box-sizing: padding-box|border-box|content-box; }</code></pre>
+
+			  		<h3>Content box (default)</h3>
+					<pre><code class="language-css">div {
+	box-sizing : content-box;
+	width      : 200px;
+	height     : 100px;
+	padding    : 5px;
+	border     : 10px solid white;
+}</code></pre>
+					<div class="rectangle" style="box-sizing : content-box;"></div>
+
+			  		<h3>Border box</h3>
+					<pre><code class="language-css">div {
+	box-sizing : border-box;
+	width      : 200px;
+	height     : 100px;
+	padding    : 5px;
+	border     : 10px solid white;
+}</code></pre>
+					<div class="rectangle" style="box-sizing : border-box;"></div>
+
+			    </div>
+			  	<div class="tab-pane" id="borderradius">
+
+			  		<h2>Border radius</h2>
+
+			    	<pre><code class="language-css">div { border-radius: all; }
+div { border-radius: top-left top-right bottom-right bottom-left; }</code></pre>
+
+					<div class="col-xs-6">
+						<pre><code class="language-css">div { border-radius : 25px }</code></pre>
+						<div class="square" style="border-radius : 25px"></div>
+			  		</div>
+					<div class="col-xs-6">
+						<pre><code class="language-css">div { border-radius : 25% }</code></pre>
+						<div class="square" style="border-radius : 25%"></div>
+			  		</div>
+					<div class="col-xs-6">
+						<pre><code class="language-css">div { border-radius : 50% }</code></pre>
+						<div class="square" style="border-radius : 50%"></div>
+			  		</div>
+					<div class="col-xs-6">
+						<pre><code class="language-css">div { border-radius : 25px 0 0 0; }</code></pre>
+						<div class="square" style="border-radius : 25px 0 0 0"></div>
+			  		</div>
+
+			    </div>
+			  	<div class="tab-pane" id="borderimage">
+
+			  		<h2>Border image</h2>
+
+			  		<pre><code class="language-css">div { border-image: source slice width outset repeat|initial|inherit; }</code></pre>
+
+			  		<a href="http://www.w3.org/TR/css3-background/border.png" class="btn btn-primary btn-block">Image</a>
+
+			  		<pre><code class="language-css">div { border-image: url('http://www.w3.org/TR/css3-background/border.png') 27 repeat; } </code></pre>
+			  		<div class="rectangle" style="border-image: url('http://www.w3.org/TR/css3-background/border.png') 27 repeat;"></div>
+
+			    </div>
+
+			</div>
+
+		</div>
+
+		<!-- ~~~~~~~~~~ -->
+		<!-- JAVASCRIPT -->
+		<!-- ~~~~~~~~~~ -->
+
+		<!-- bootstrap -->
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+
+		<!-- prism -->
+		<script src="js/prism.js"></script>
+
+
+	</body>
+
+</html>

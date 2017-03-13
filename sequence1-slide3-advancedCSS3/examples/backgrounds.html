@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1"/>
+	    <link rel="stylesheet" href="css/bootstrap.css" media="all">
+	    <link rel="stylesheet" href="css/prism.css" media="all">
+	    <link rel="stylesheet" href="css/style.css" media="all">
+		<title>3WEB - Sequence 1 - Advanced CSS3 - Attributes - Backgrounds</title>
+	</head>
+
+	<body>
+
+		<div class="container">
+
+			<h1>Sequence 1 - Advanced CSS3 - Attributes - Backgrounds</h1>
+
+			<ul class="pager">
+			  	<li class="previous"><a href="containers.html">← Containers</a></li>
+			  	<li><a href="index.html">Home</a></li>
+			  	<li class="next"><a href="texts.html">Texts →</a></li>
+			</ul>
+
+			<ul class="nav nav-tabs">
+			  	<li class="active">
+			  		<a href="#backgroundorigin" data-toggle="tab">Background origin</a>
+			  	</li>
+			  	<li>
+			  		<a href="#lineargradiant" data-toggle="tab">Linear gradiant</a>
+			  	</li>
+			  	<li>
+			  		<a href="#radialgradiant" data-toggle="tab">Radial gradiant</a>
+			  	</li>
+			  	<li>
+			  		<a href="#boxreflect" data-toggle="tab">Box reflect</a>
+			  	</li>
+			</ul>
+
+			<div id="myTabContent" class="tab-content">
+			  	<div class="tab-pane active" id="backgroundorigin">
+			  		<h2>Background Origin</h2>
+
+			  		<pre><code class="language-css">div { background-origin: padding-box|border-box|content-box; }</code></pre>
+
+			  		<h3>Content box</h3>
+			  		<pre><code class="language-css">div { background-origin: content-box; }</code></pre>
+			  		<div class="rectangle imgbg" style=" background-origin: content-box;"></div>
+
+					<h3>Padding box (default)</h3>
+			  		<pre><code class="language-css">div { background-origin: padding-box; }</code></pre>
+			  		<div class="rectangle imgbg" style=" background-origin: padding-box;"></div>
+
+			  		<h3>Border box</h3>
+			  		<pre><code class="language-css">div { background-origin: border-box; }</code></pre>
+			  		<div class="rectangle imgbg" style=" background-origin: border-box;"></div>
+
+			    </div>
+			  	<div class="tab-pane" id="lineargradiant">
+			  		<h2>Linear gradiant</h2>
+
+			  		<pre><code class="language-css">div { background: linear-gradient(direction, color-stop1, color-stop2, ...); }</code></pre>
+
+					<h3>Classic</h3>
+					<pre><code class="language-css">div { background: linear-gradient(red,yellow,green); }</code></pre>
+					<div class="square" style="background: linear-gradient(red,yellow,green);"></div>
+
+					<h3>Direction</h3>
+					<pre><code class="language-css">div { background: linear-gradient(45deg,red,yellow,green); }</code></pre>
+					<div class="square" style="background: linear-gradient(45deg,red,yellow,green);"></div>
+
+					<h3>Differently Spaced</h3>
+					<pre><code class="language-css">div { background: linear-gradient(red,yellow 20%,green 90%); }</code></pre>
+					<div class="square" style="background: linear-gradient(red,yellow 20%,green 90%);"></div>
+
+			    </div>
+			  	<div class="tab-pane" id="radialgradiant">
+			  		<h2>Radial gradiant</h2>
+
+			  		<pre><code class="language-css">div { background: radial-gradient(shape size at position, start-color, ..., last-color); }</code></pre>
+
+					<h3>Classic</h3>
+					<pre><code class="language-css">div { background: radial-gradient(red,yellow,green); }</code></pre>
+					<div class="rectangle" style="background: radial-gradient(red,yellow,green);"></div>
+
+					<h3>Shape</h3>
+					<pre><code class="language-css">div { background: radial-gradient(circle,red,yellow,green); }</code></pre>
+					<div class="rectangle" style="background: radial-gradient(circle,red,yellow,green);"></div>
+
+					<h3>Repeating</h3>
+					<pre><code class="language-css">div { background: repeating-radial-gradient(red, yellow 10%, green 15%); }</code></pre>
+					<div class="rectangle" style="background: repeating-radial-gradient(red, yellow 10%, green 15%);"></div>
+
+			    </div>
+			  	<div class="tab-pane" id="boxreflect">
+			  		<h2>Box reflect</h2>
+
+			  		<pre><code class="language-css">div { -webkit-box-reflect: direction margin mask-box; }</code></pre>
+
+			  		<h3>Below</h3>
+			  		<pre><code class="language-css">div { -webkit-box-reflect: below 5px linear-gradient(transparent, white); }</code></pre>
+			  		<div class="rectangle" style="-webkit-box-reflect: below 5px linear-gradient(transparent, white);"></div>
+
+			    </div>
+			</div>
+
+		</div>
+
+		<!-- ~~~~~~~~~~ -->
+		<!-- JAVASCRIPT -->
+		<!-- ~~~~~~~~~~ -->
+
+		<!-- bootstrap -->
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+
+		<!-- prism -->
+		<script src="js/prism.js"></script>
+
+
+	</body>
+
+</html>

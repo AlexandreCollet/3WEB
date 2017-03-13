@@ -1,0 +1,33 @@
+.square {
+	width: 100px; height: 100px;
+	box-sizing : content-box;
+	margin: 25px auto;
+	background-color: #375A7F;
+}
+
+.rectangle{
+	width: 200px; height: 100px;
+	box-sizing : content-box;
+	background-color: #375A7F;
+	padding : 5px;
+	border: 10px solid white;
+	margin: 25px auto;
+}
+
+.img-presentation{
+	display: block;
+	margin: 0 auto;
+	background-color: #fff;
+	width: 200px;
+	height: 200px;
+
+}
+
+.imgbg{
+	background : url('../img/css3.jpg');
+}
+
+.ptext{
+	font-size: 100px;
+	text-align: center;
+}

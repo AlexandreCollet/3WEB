@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1"/>
+	    <link rel="stylesheet" href="css/bootstrap.css" media="all">
+	    <link rel="stylesheet" href="css/prism.css" media="all">
+	    <link rel="stylesheet" href="css/style.css" media="all">
+		<title>3WEB - Sequence 1 - Advanced CSS3 - New attributes</title>
+	</head>
+
+	<body>
+
+		<div class="container">
+
+			<h1>Sequence 1 - Advanced CSS3 - Attributes - Texts</h1>
+
+			<ul class="pager">
+			  	<li class="previous"><a href="backgrounds.html">← Backgrounds</a></li>
+			  	<li><a href="index.html">Home</a></li>
+			  	<li class="next"><a href="transforms.html">Transforms →</a></li>
+			</ul>
+
+			<ul class="nav nav-tabs">
+			  	<li class="active">
+			  		<a href="#textshadow" data-toggle="tab">Text shadow</a>
+			  	</li>
+			  	<li>
+			  		<a href="#textstroke" data-toggle="tab">Text stroke</a>
+			  	</li>
+			  	<li>
+			  		<a href="#columns" data-toggle="tab">Columns</a>
+			  	</li>
+			</ul>
+
+			<div id="myTabContent" class="tab-content">
+			  	<div class="tab-pane active" id="textshadow">
+
+			  		<h2>Text Shadow</h2>
+
+			  		<pre><code class="language-css">p { text-shadow: right top blur color; }</code></pre>
+
+			  		<pre><code class="language-css">p { text-shadow: 5px 5px 5px red; }</code></pre>
+			  		<p class="ptext" style="text-shadow: 5px 5px 5px red;">Salsifis</p>
+
+			    </div>
+			  	<div class="tab-pane" id="textstroke">
+				  	<h2>Text Stroke</h2>
+
+				  	<pre><code class="language-css">p { -webkit-text-stroke: size color; }</code></pre>
+
+				  	<pre><code class="language-css">p { -webkit-text-stroke: 5px red; }</code></pre>
+				  	<p class="ptext" style="-webkit-text-stroke: 5px red;">Courgette</p>
+			    </div>
+			  	<div class="tab-pane" id="columns">
+			  		<h2>Columns</h2>
+
+					<pre><code class="language-css">p {
+	column-count: number;
+	column-gap: gap;
+	column-width: width;
+}</code></pre>
+
+					<h3>Column count</h3>
+
+					<pre><code class="language-css">p {
+	column-count: 5;
+	column-gap: 25px;
+}</code></pre>
+
+					<p style="-webkit-column-count: 5;-webkit-column-gap: 25px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia facere aut enim natus velit dolores. Modi laudantium ipsum rem eligendi itaque ipsa aliquam autem voluptate. Debitis itaque ducimus repellat accusantium!
+					Cum at vitae quos mollitia adipisci consectetur repudiandae? Id quasi doloribus quaerat numquam, maxime eum provident ullam, fugit sapiente itaque accusantium sunt, porro delectus similique quod consequuntur repellendus alias error.
+					Vitae est nesciunt rerum quo fuga ipsum suscipit iusto, nulla unde amet cumque voluptates minima libero cum aspernatur dolore, autem adipisci commodi. Magni placeat fuga a, corrupti ad cumque quod!
+					Nobis dolorum sunt, voluptates animi libero dolores praesentium, quas, architecto possimus debitis doloribus, voluptate nisi placeat pariatur eligendi repudiandae adipisci facilis est deleniti molestiae natus necessitatibus sit. Dolorem, nemo saepe!
+					Similique non doloremque itaque obcaecati, voluptas consectetur consequuntur cupiditate ratione, laudantium numquam totam maxime ex cum culpa rerum ea enim! Explicabo commodi, neque expedita itaque! Ipsa officia, sapiente sunt iusto.
+					Soluta cum corrupti deserunt, nam adipisci, eum, accusamus reprehenderit excepturi culpa necessitatibus omnis earum mollitia sit! Itaque doloribus inventore, iste, quibusdam aliquid aspernatur veritatis, iure suscipit necessitatibus, consectetur sunt dolorem.</p>
+
+			    	<h3>Column width</h3>
+
+					<pre><code class="language-css">p {
+	column-width: 100px;
+	column-gap: 25px;
+}</code></pre>
+
+			    	<p style="-webkit-column-width: 100px;-webkit-column-gap: 25px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia facere aut enim natus velit dolores. Modi laudantium ipsum rem eligendi itaque ipsa aliquam autem voluptate. Debitis itaque ducimus repellat accusantium!
+					Cum at vitae quos mollitia adipisci consectetur repudiandae? Id quasi doloribus quaerat numquam, maxime eum provident ullam, fugit sapiente itaque accusantium sunt, porro delectus similique quod consequuntur repellendus alias error.
+					Vitae est nesciunt rerum quo fuga ipsum suscipit iusto, nulla unde amet cumque voluptates minima libero cum aspernatur dolore, autem adipisci commodi. Magni placeat fuga a, corrupti ad cumque quod!
+					Nobis dolorum sunt, voluptates animi libero dolores praesentium, quas, architecto possimus debitis doloribus, voluptate nisi placeat pariatur eligendi repudiandae adipisci facilis est deleniti molestiae natus necessitatibus sit. Dolorem, nemo saepe!
+					Similique non doloremque itaque obcaecati, voluptas consectetur consequuntur cupiditate ratione, laudantium numquam totam maxime ex cum culpa rerum ea enim! Explicabo commodi, neque expedita itaque! Ipsa officia, sapiente sunt iusto.
+					Soluta cum corrupti deserunt, nam adipisci, eum, accusamus reprehenderit excepturi culpa necessitatibus omnis earum mollitia sit! Itaque doloribus inventore, iste, quibusdam aliquid aspernatur veritatis, iure suscipit necessitatibus, consectetur sunt dolorem.</p>
+
+			    </div>
+			</div>
+
+		</div>
+
+		<!-- ~~~~~~~~~~ -->
+		<!-- JAVASCRIPT -->
+		<!-- ~~~~~~~~~~ -->
+
+		<!-- bootstrap -->
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+
+		<!-- prism -->
+		<script src="js/prism.js"></script>
+
+
+	</body>
+
+</html>
