@@ -12,3 +12,10 @@
 [Microdata schemas](http://schema.org)
 
 [Microdata Rich snippets](https://search.google.com/structured-data/testing-tool)
+
+### Slide 4 - Advanced Javascript
+[Keyword list](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords)
+
+[Javascript ES5 styleguide by airbnb](https://github.com/airbnb/javascript/tree/es5-deprecated/es5)
+
+[import instruction in ES6](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/import)
