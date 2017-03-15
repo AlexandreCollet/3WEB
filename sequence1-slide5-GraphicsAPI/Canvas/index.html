@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1"/>
+	    <link rel="stylesheet" href="css/bootstrap.css" media="all">
+		<title>3WEB - Sequence 1 - Graphics API - Canvas</title>
+	</head>
+
+	<body>
+					
+		<div class="container">
+			
+			<h1>Sequence 1 - Graphics API - Canvas</h1>
+
+			<!-- ~~~~~ -->
+			<!-- RULES -->
+			<!-- ~~~~~ -->
+			
+			<h2>Rules</h2>
+			
+			<ul>
+				<li>
+					Reproduce this image
+					<img src="img/smiley.png" alt="smiley">
+				</li>
+				<li>Notes: Canvas can’t draw an ellipse as easily as SVG can. You’ll need to use two curves instead</li>
+				<li>Filters are way more hard to do in canvas, so drop the cheekbones!</li>
+			</ul>
+
+			<!-- ~~~~~~~~~~ -->
+			<!-- CORRECTION -->
+			<!-- ~~~~~~~~~~ -->
+			
+			<h2>Correction</h2>
+
+			<canvas id="canvasSmiley" width="500" height="500"></canvas>
+
+		</div>
+		
+		<!-- ~~~~~~~~~~ -->
+		<!-- JAVASCRIPT -->
+		<!-- ~~~~~~~~~~ -->
+		
+		<!-- bootstrap -->
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+
+		<!-- Correction -->
+		<script>
+
+			var canvas  = document.getElementById('canvasSmiley'); 
+			var context = canvas.getContext('2d');
+
+			// Background
+			
+			context.beginPath();
+			context.rect(0, 0, 500, 500);
+			context.fillStyle = 'white';
+      		context.fill();
+
+
+      		// Head
+      		
+      		context.beginPath();
+
+      		context.arc(250, 250, 200, 0, 2 * Math.PI, true);
+      		context.fillStyle = "rgb(252,235,110)";
+      		context.lineWidth = 2;
+      		context.strokeStyle = "black";
+
+      		context.fill();
+      		context.stroke();
+
+      		// Eyes
+      		
+      		context.beginPath();
+
+      		context.moveTo(114,204);
+      		context.lineTo(174,146);
+      		context.lineTo(234,204);
+
+      		context.moveTo(274,204);
+      		context.lineTo(334,146);
+      		context.lineTo(394,204);
+
+      		context.lineWidth = 2;
+      		context.stroke();
+
+      		// Mouth
+      		
+      		context.beginPath();
+
+      		context.moveTo(225,350);
+      		context.quadraticCurveTo(250, 230, 275, 350);
+      		context.fillStyle = 'black';
+
+      		context.fill();
+
+      		context.beginPath();
+
+      		context.moveTo(225,350);
+      		context.quadraticCurveTo(250, 470, 275, 350);
+      		context.fillStyle = 'black';
+
+      		context.fill();    		
+
+      		// Text
+			
+			context.font = "21px Calibri";
+      		context.fillText("Yoohoo!", 300, 300);
+
+
+
+		</script>
+
+	</body>
+
+</html>
