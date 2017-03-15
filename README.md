@@ -1,5 +1,7 @@
 # 3WEB
 
+My email: alexandre@collet.email
+
 ## Sequence 1
 
 ### Slide 2 - Advanced HTML5
