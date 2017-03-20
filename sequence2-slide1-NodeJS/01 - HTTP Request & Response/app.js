@@ -3,7 +3,6 @@
  */
 
 var http = require('http');
-var querystring = require('querystring');
 
 /**
  * Variables
@@ -47,15 +46,7 @@ var server = http.createServer(function(request, response) {
         });
 
         request.on('end', function() {
-            response.write(body + "\n\n");
-
-            var data = querystring.parse(body);
-
-            for(var key in data){
-                response.write(key + " ==> " + datas[key] + "\n");
-            }
-
-            response.end();
+            response.end(body + '\n\n');
         });
     }
 
