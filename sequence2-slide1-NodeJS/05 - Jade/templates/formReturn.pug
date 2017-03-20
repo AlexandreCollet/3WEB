@@ -1,0 +1,52 @@
+mixin displayPerson(id, person)
+    li(id="person" + id)
+        p #{person.firstname} #{person.lastname}
+        a(href="/delete/" + id, class="deletePerson") delete 
+
+doctype html
+html
+    
+    head
+        title formReturn
+    
+    body
+        ul
+            each person, index in persons
+                +displayPerson(index, person)
+
+        script(type="text/javascript").
+
+            var buttons = document.querySelectorAll('a.deletePerson');
+            
+            for(var i=0,l=buttons.length; i<l; i++){
+
+                var button = buttons[i];
+
+                button.onclick = function(){
+                    var request = new XMLHttpRequest();
+                    request.open('GET', this.href);
+                    request.addEventListener('readystatechange',function(){
+
+                        if (request.readyState != 4 || request.status != 200) return;
+                        
+                        var response = JSON.parse(request.responseText);
+                        var id = response.id;
+                        var div = document.getElementById('person' + id);
+                        div.parentNode.removeChild(div);
+                        
+                        id++;
+                        var nextDiv = document.getElementById('person' + id);
+                        
+                        while(nextDiv){
+                            
+                            nextDiv.id = "person" + (id-1);
+                            nextDiv.querySelector('a').href = '/delete/' + (id-1);
+
+                            nextDiv = document.getElementById('person' + (++id) );
+                        }
+
+                    });
+                    request.send(null);
+                    return false;
+                }
+            }
