@@ -1,4 +1,5 @@
 var fs = require('fs');
+var path = require('path');
 
 module.exports = {
 
@@ -13,49 +14,21 @@ module.exports = {
     },
 
     getIndex : function(request,response){
-
-        fs.readFile('index.html',function(err,data){
-
-            if(err){
-                response.statusCode = 500;
-                response.end('Error readFile index.html');
-            }
-
-            else{
-                response.writeHead(200, {'Content-Type': 'text/html'});
-                response.end(data);
-            }
-
+        var file_path = path.join(__dirname, '/index.html');
+        response.sendFile(file_path, function(err){
+            console.log('index.html sended.');
         });
-
     },
 
     getForm : function(request,response){
-
-        fs.readFile('form.html',function(err,data){
-
-            if(err){
-                response.statusCode = 500;
-                response.end('Error readFile form.html');
-            }
-
-            else{
-                response.writeHead(200, {'Content-Type': 'text/html'});
-                response.end(data);
-            }
-
+        var file_path = path.join(__dirname, '/form.html');
+        response.sendFile(file_path, function(err){
+            console.log('form.html sended.');
         });
-
     },
 
     postForm : function(request,response){
-
-        response.writeHead(200, {'Content-Type': 'application/json'});
-
-        response.end(JSON.stringify({
-            result : "Success"
-        }));
-
+        response.json({result: "Success"});
     },
 
 }
