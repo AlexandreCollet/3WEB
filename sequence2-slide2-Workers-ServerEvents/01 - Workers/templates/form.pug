@@ -1,0 +1,14 @@
+doctype html
+html
+    
+    head
+        title My Jade File
+    
+    body
+        form(method='POST',action='/form')
+            label(for="firstname") Firstname
+            input(type="text",name="firstname",id="firstname")
+            label(for="lastname") Lastname
+            input(type="text",name="lastname",id="lastname")
+            input(type="submit",value="Send")
+

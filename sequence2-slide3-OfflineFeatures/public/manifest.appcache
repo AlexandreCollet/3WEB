@@ -1,0 +1,16 @@
+CACHE MANIFEST
+
+# v1 08-03-2015
+
+CACHE:
+/css/style.css
+/css/bootstrap.css
+/js/jquery-1.11.2.min.js
+/js/bootstrap.min.js
+/js/socket-io.js
+
+FALLBACK:
+/js/script.js /js/offline.js
+
+NETWORK:
+*

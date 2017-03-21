@@ -1,0 +1,23 @@
+.fixed{
+	position: fixed;
+	background-color: #222;
+	padding-top: 5px; 
+	bottom: 0;
+	left:5%;
+	width : 90%;
+}
+
+.received{
+	width : 80%;
+}
+.received h5 { text-align : left; }
+
+.sended{
+	width : 80%;
+	margin-left:20%;
+}
+.sended h5 { text-align: right;}
+
+#messages{
+	margin-bottom: 100px;
+}

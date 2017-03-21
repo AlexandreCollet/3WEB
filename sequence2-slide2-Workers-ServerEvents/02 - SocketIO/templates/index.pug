@@ -1,0 +1,44 @@
+doctype html
+html
+    
+    head
+        title Sequence 2 - Workers & Server Events - SocketIO
+        link(rel="stylesheet",href="css/bootstrap.css",media="all")
+        link(rel="stylesheet",href="css/style.css",media="all")
+    
+    body
+        div(class="container")
+
+            div(id="anonymous")
+                
+                h3 Your username
+
+                form(method="POST",id="formUsername")
+                    div(class="form-group")
+                        div(class="input-group")
+                            input(type="text",name="username",class="form-control")
+                            span(class="input-group-btn")
+                                button(class="btn btn-default btn-success",type="submit") Connect
+
+            div(id="connected",class="hidden")
+
+                div(id="messages")
+
+                div(class="fixed")
+                    form(method="POST",id="formMessage")
+                        div(class="form-group")
+                            div(class="input-group")
+                                input(type="text",name="message",class="form-control")
+                                span(class="input-group-btn")
+                                    button(class="btn btn-default btn-success",type="submit") Send
+
+
+            //
+            // JAVASCRIPT
+            //
+
+            script(src="js/jquery-1.11.2.min.js")
+            script(src="js/bootstrap.min.js")
+            script(src="js/socket-io.js")
+            script(src="js/script.js")
+

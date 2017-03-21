@@ -1,0 +1,41 @@
+doctype html
+html
+    
+    head
+        title Sequence 2 - Workers & Server Events - Web workers
+        link(rel="stylesheet",href="css/bootstrap.css",media="all")
+
+    body
+
+        div.container
+            
+            h1 Sequence 2 - Workers & Server Events - Web workers
+
+            h2 Rules
+            ul
+                li Depuis l'index
+                li Récupérer les nouveaux utilisateurs de votre application sur : /newusers/TIMESTAMP
+                li Le timestamp correspond à la date de votre dernière requête
+                li Si aucun timestamp, récupérer tous les utilisateurs
+                li Le script qui va récupérer les nouveaux utilisateurs doit être effectué par un worker
+                li Votre script va rechercher toutes les 5 secondes si de nouveaux utilisateurs sont disponibles
+                li Lorsqu'il y a de nouveaux utilisateurs, les afficher sans supprimer les anciens
+
+            h2 Corrections
+            
+            div#alerts
+
+            table.table.table-striped.table-hover
+                thead
+                    tr
+                        th #
+                        th Firstname
+                        th Lastname
+                        th Created
+                tbody#usersList
+
+
+        script(src="js/jquery-1.11.2.min.js")
+        script(src="js/bootstrap.min.js")
+        script(src="js/script.js")
+
