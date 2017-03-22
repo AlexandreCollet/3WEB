@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+
+	<head>
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1"/>
+	    <link rel="stylesheet" href="css/bootstrap.css" media="all">
+	    <style>
+			table{
+				table-layout: fixed;
+			}
+	    </style>
+		<title>3WEB - Sequence 2 - AngularJS</title>
+	</head>
+
+	<body>
+		<div class="container">
+
+			<h1>Sequence 2 - AngularJS - MVC In Angular</h1>
+
+			<!-- ~~~~~ -->
+			<!-- RULES -->
+			<!-- ~~~~~ -->
+
+			<h2>Rules</h2>
+
+			<ul>
+				<li>
+					<p>Create a file "controllers.js"</p>
+					<ul>
+						<li>Inside, a controller called ProductsCtrl</li>
+						<li>Create some data and bind them to the scope</li>
+					</ul>
+				</li>
+				<li>
+					<p>Create a file "models.js"</p>
+					<ul>
+						<li>Inside, a Product model with these properties: Name, Description, Price</li>
+					</ul>
+				</li>
+				<li>
+					<p>Create a file "app.js"</p>
+					<ul>
+						<li>Inside, the module declaration</li>
+					</ul>
+				</li>
+				<li>
+					<p>Create a file "index.html"</p>
+					<ul>
+						<li>Use all you saw to create a CRUD system on these products</li>
+						<li>Note: CRUD also contains "update"!</li>
+					</ul>
+				</li>
+			</ul>
+
+			<!-- ~~~~~~~~~~ -->
+			<!-- CORRECTION -->
+			<!-- ~~~~~~~~~~ -->
+
+			<h2>Correction</h2>
+
+			<div ng-controller="ProductsController">
+
+				<a data-toggle="modal" data-target="#addProductModal"  href="#" class="btn btn-success btn-lg btn-block">Add Product</a>
+
+				<h4>Filters</h4>
+				<div class="row">
+					<div class="col-lg-4 col-md-6">
+						<input class="form-control" type="number" ng-model="limitTo" placeholder="Limit results to">
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<input class="form-control" type="text" ng-model="query" placeholder="Search Products">
+					</div>
+					<div class="col-lg-4 col-md-12">
+						<button class="btn btn-primary btn-xs" ng-click="orderBy = '+name'">Name ASC</button>
+						<button class="btn btn-primary btn-xs" ng-click="orderBy = '-name'">Name DESC</button>
+						<button class="btn btn-primary btn-xs" ng-click="orderBy = '+price'">Price ASC</button>
+						<button class="btn btn-primary btn-xs" ng-click="orderBy = '-price'">Price DESC</button>
+					</div>
+				</div>
+				<h4>Products List</h4>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Description</th>
+							<th>Price</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="(index,product) in products | filter:query | orderBy:orderBy | limitTo:limitTo">
+							<th>
+								<p ng-hide="product.isEdited">{{ product.name }}</p>
+								<input ng-show="product.isEdited" type="text" class="form-control" ng-model="product.name">
+							</th>
+							<th>
+								<p ng-hide="product.isEdited">{{ product.description }}</p>
+								<textarea ng-show="product.isEdited" type="text" class="form-control" ng-model="product.description"></textarea>
+							</th>
+							<th>
+								<p ng-hide="product.isEdited">{{ product.price }}</p>
+								<input ng-show="product.isEdited" type="number" class="form-control" ng-model="product.price">
+							</th>
+							<th>
+								<a href class="btn btn-warning" ng-hide="product.isEdited" ng-click="product.isEdited = true">Edit</a>
+								<a href class="btn btn-danger" ng-hide="product.isEdited" ng-click="deleteProduct(index)">Delete</a>
+								<button ng-show="product.isEdited" ng-click="product.isEdited = false" class="btn btn-warning">OK</button>
+							</th>
+
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="modal fade" id="addProductModal">
+					<form ng-submit="addProduct()">
+					  	<div class="modal-dialog">
+					    	<div class="modal-content">
+					      		<div class="modal-header">
+					        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					        		<h4 class="modal-title">Add Product</h4>
+					      		</div>
+					      		<div class="modal-body">
+
+									<div class="form-group">
+									  	<label class="control-label" for="ProductName">Name</label>
+									  	<input class="form-control" type="text" id="ProductName" ng-model="product.name">
+									</div>
+									<div class="form-group">
+									  	<label class="control-label" for="ProductDescription">Description</label>
+									  	<textarea class="form-control" id="ProductDescription" ng-model="product.description"></textarea>
+									</div>
+									<div class="form-group">
+									  	<label class="control-label" for="ProductPrice">Price</label>
+									  	<input class="form-control" type="number" id="ProductPrice" ng-model="product.price">
+									</div>
+					      		</div>
+					      		<div class="modal-footer">
+					        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					        		<button type="submit" class="btn btn-primary">Add Product</button>
+					      		</div>
+					    	</div>
+					  	</div>
+					</form>
+				</div>
+			</div>
+
+
+		</div>
+
+		<!-- ~~~~~~~~~~ -->
+		<!-- JAVASCRIPT -->
+		<!-- ~~~~~~~~~~ -->
+
+		<!-- bootstrap -->
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+
+		<!-- Correction -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+		<script src="app.js"></script>
+		<script src="models.js"></script>
+		<script src="controllers.js"></script>
+	</body>
+
+</html>
