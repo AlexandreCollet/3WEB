@@ -14,8 +14,11 @@ angular.module('myModule').controller('ProductsController',function($scope){
 	$scope.query   = "";
 
 	$scope.addProduct = function(){
-		this.products.push(this.product);
+		var product = new Product(this.product.name, this.product.description, this.product.price);
 		this.product = {};
+
+		this.products.push(product);
+
 		$('#addProductModal').modal('hide');
 	};
 

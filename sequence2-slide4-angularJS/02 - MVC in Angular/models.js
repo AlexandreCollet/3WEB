@@ -5,3 +5,7 @@ function Product(name,description,price){
 	this.price       = price;
 
 }
+
+Product.prototype.myFunction = function() {
+    console.log(this.name);
+}
