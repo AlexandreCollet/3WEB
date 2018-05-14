@@ -5,7 +5,7 @@ var User = require('./user.js');
 module.exports = {
 
     allInit: function(request, response, next){
-        console.log('All init');        
+        console.log('All init');
         next();
     },
 
@@ -40,13 +40,13 @@ module.exports = {
         });
     },
 
-    getNewUsers: function(request, response){
+    getUsers: function(request, response){
         var since = new Date(0);
 
-        if(request.params.since) {
-            since = new Date(parseInt(request.params.since));
+        if(request.query.since) {
+            since = new Date(parseInt(request.query.since));
         }
-        
+
         User.find()
             .where('created').gt(since)
             .sort('-created')

@@ -64,10 +64,8 @@ router.route('/form')
     .post(controller.postForm);
 router.route('/delete/:id')
     .get(controller.getDelete);
-router.route('/newusers')
-    .get(controller.getNewUsers);
-router.route('/newusers/:since')
-    .get(controller.getNewUsers);
+router.route('/users')
+    .get(controller.getUsers);
 
 app.use(router);
 

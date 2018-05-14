@@ -7,7 +7,11 @@ setInterval(function(){
 
 function getNewUsers(){
 
-    var url = "http://127.0.0.1:8080/newusers" + (lastUserCreatedDate ? "/" + lastUserCreatedDate.getTime() : "")
+    var url = "http://127.0.0.1:8080/users"
+
+    if (lastUserCreatedDate) {
+        url+= "?since=" + lastUserCreatedDate.getTime()
+    }
 
     var request = new XMLHttpRequest();
 
@@ -16,7 +20,7 @@ function getNewUsers(){
     request.addEventListener('readystatechange',function(){
 
         if (request.readyState != 4 || request.status != 200) return;
-        
+
         var response = JSON.parse(request.responseText);
 
         if(response.length) lastUserCreatedDate = new Date(response[0].created);
@@ -27,7 +31,7 @@ function getNewUsers(){
 
     request.send(null);
 
-} 
+}
 
 function generateHTML(users){
 
