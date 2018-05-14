@@ -7,7 +7,7 @@ setInterval(function(){
 
 function getNewUsers(){
 
-    var url = "http://vmlinux:8080/newusers" + (lastUserCreatedDate ? "/" + lastUserCreatedDate.getTime() : "")
+    var url = "http://127.0.0.1:8080/newusers" + (lastUserCreatedDate ? "/" + lastUserCreatedDate.getTime() : "")
 
     var request = new XMLHttpRequest();
 
