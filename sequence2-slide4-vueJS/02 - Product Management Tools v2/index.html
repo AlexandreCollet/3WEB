@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+
+	<head>
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1"/>
+	    <link rel="stylesheet" href="css/bootstrap.css" media="all">
+	    <style>
+			table{
+				table-layout: fixed;
+			}
+	    </style>
+		<title>3WEB - Sequence 2 - VueJS</title>
+	</head>
+
+	<body>
+		<div class="container">
+
+			<h1>Sequence 2 - VueJS - Product Management Tools v2</h1>
+
+			<!-- ~~~~~ -->
+			<!-- RULES -->
+			<!-- ~~~~~ -->
+
+			<h2>Rules</h2>
+
+			<ul>
+				<li>
+					<p>We’ll create a Product Management Tool</p>
+					<ul>
+						<li>A panel to list all products</li>
+						<li>A panel to set properties of the selected one</li>
+					</ul>
+				</li>
+			</ul>
+
+			<!-- ~~~~~~~~~~ -->
+			<!-- CORRECTION -->
+			<!-- ~~~~~~~~~~ -->
+
+			<h2>Correction</h2>
+
+			<div id="app">
+				<h3>{{ title }}</h3>
+
+				<h4>Filters</h4>
+				<div class="row">
+					<div class="col-lg-4 col-md-6">
+						<select class="form-control" v-model='selectedCurrencyIndex'>
+							<option v-for='(currency, index) in currencies' :value="index">{{ currency.symbol }}</option>
+						</select>
+					</div>
+				</div>
+
+				<h4>Products List</h4>
+				<product-list
+                    :products="products"
+                    :selected-currency="selectedCurrency"
+                />
+			</div>
+		</div>
+
+		<!-- ~~~~~~~~~~ -->
+		<!-- JAVASCRIPT -->
+		<!-- ~~~~~~~~~~ -->
+
+		<!-- bootstrap -->
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+
+		<!-- Correction -->
+        <script src="https://unpkg.com/vue"></script>
+        <script src="./productComponent.js"></script>
+        <script src="./productListComponent.js"></script>
+		<script src="./app.js"></script>
+
+	</body>
+
+</html>

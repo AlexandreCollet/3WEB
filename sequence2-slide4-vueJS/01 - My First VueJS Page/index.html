@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1"/>
+        <link rel="stylesheet" href="css/bootstrap.css" media="all">
+        <title>3WEB - Sequence 2 - VueJS</title>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <h1>Sequence 2 - VueJS - My First VueJS Page</h1>
+
+            <!-- ~~~~~ -->
+            <!-- RULES -->
+            <!-- ~~~~~ -->
+
+            <h2>Rules</h2>
+
+            <ul>
+                <li>Create an "index.html" file</li>
+                <li>Insert needed code to make it work</li>
+                <li>Use {{ 1 + 2 }} in your code (What does it make?)</li>
+                <li>Try to display a local variable with binding (What does it make?)</li>
+            </ul>
+
+            <!-- ~~~~~~~~~~ -->
+            <!-- CORRECTION -->
+            <!-- ~~~~~~~~~~ -->
+
+            <h2>Correction</h2>
+
+            <div id="app">
+                <p>VueJS data: {{ myText }} </p>
+                <p>local variable: {{ myLocalVariable }}</p>
+                <p>addition: {{ 1 + 2 }}</p>
+                <p>addition with VueJS data: {{ myNumber + 32 }}</p>
+            </div>
+
+
+        </div>
+
+        <script src="https://unpkg.com/vue"></script>
+        <script type="text/javascript">
+            var myLocalVariable = "Bonjour le monde!";
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    myText: "Hello World!",
+                    myNumber: 10,
+                }
+            });
+        </script>
+    </body>
+
+</html>
