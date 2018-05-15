@@ -35,7 +35,6 @@ Vue.component('product-list', {
                     @stop-product-update="resetUpdatedProduct"
                 />
             </tbody>
-            <div>{{ products[0].name }}</div>
         </table>
     `,
 })
